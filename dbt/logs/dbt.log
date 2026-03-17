@@ -1563,3 +1563,321 @@ drop view if exists "warehouse"."public"."dim_users__dbt_backup" cascade
 [0m20:48:41.676816 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd6017780b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd601227b30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd5ff534650>]}
 [0m20:48:41.677808 [debug] [MainThread]: Flushing usage events
 [0m20:48:42.761917 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:51:49.195811 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d43e6b0b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d44074800>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d44074740>]}
+
+
+============================== 20:51:49.202870 | bdf99f7b-a55a-47f6-959c-256271da1949 ==============================
+[0m20:51:49.202870 [info ] [MainThread]: Running with dbt=1.9.0
+[0m20:51:49.204567 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/usr/app/dbt', 'log_path': '/usr/app/dbt/logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt test', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m20:51:49.418971 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'bdf99f7b-a55a-47f6-959c-256271da1949', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d434e9f40>]}
+[0m20:51:49.479695 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'bdf99f7b-a55a-47f6-959c-256271da1949', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d4322fd70>]}
+[0m20:51:49.482275 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m20:51:49.556940 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m20:51:49.777088 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+[0m20:51:49.778662 [debug] [MainThread]: Partial parsing: added file: warehouse_project://models/staging/schema.yml
+[0m20:51:50.043899 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.warehouse_project.example
+[0m20:51:50.050833 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'bdf99f7b-a55a-47f6-959c-256271da1949', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d416571d0>]}
+[0m20:51:50.138354 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m20:51:50.145907 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m20:51:50.191503 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'bdf99f7b-a55a-47f6-959c-256271da1949', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d41547a40>]}
+[0m20:51:50.192919 [info ] [MainThread]: Found 6 models, 4 data tests, 429 macros
+[0m20:51:50.194187 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bdf99f7b-a55a-47f6-959c-256271da1949', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d41a712b0>]}
+[0m20:51:50.196966 [info ] [MainThread]: 
+[0m20:51:50.198164 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m20:51:50.199351 [info ] [MainThread]: 
+[0m20:51:50.200786 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m20:51:50.206476 [debug] [ThreadPool]: Acquiring new postgres connection 'list_warehouse_public'
+[0m20:51:50.248033 [debug] [ThreadPool]: Using postgres connection "list_warehouse_public"
+[0m20:51:50.249514 [debug] [ThreadPool]: On list_warehouse_public: BEGIN
+[0m20:51:50.250554 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:51:50.257733 [debug] [ThreadPool]: SQL status: BEGIN in 0.007 seconds
+[0m20:51:50.258879 [debug] [ThreadPool]: Using postgres connection "list_warehouse_public"
+[0m20:51:50.259755 [debug] [ThreadPool]: On list_warehouse_public: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "warehouse_project", "target_name": "dev", "connection_name": "list_warehouse_public"} */
+select
+      'warehouse' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'warehouse' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'warehouse' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m20:51:50.263513 [debug] [ThreadPool]: SQL status: SELECT 11 in 0.003 seconds
+[0m20:51:50.265547 [debug] [ThreadPool]: On list_warehouse_public: ROLLBACK
+[0m20:51:50.266529 [debug] [ThreadPool]: On list_warehouse_public: Close
+[0m20:51:50.274077 [debug] [MainThread]: Using postgres connection "master"
+[0m20:51:50.275130 [debug] [MainThread]: On master: BEGIN
+[0m20:51:50.276015 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:51:50.281330 [debug] [MainThread]: SQL status: BEGIN in 0.005 seconds
+[0m20:51:50.282315 [debug] [MainThread]: Using postgres connection "master"
+[0m20:51:50.283243 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "warehouse_project", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m20:51:50.288181 [debug] [MainThread]: SQL status: SELECT 7 in 0.004 seconds
+[0m20:51:50.291648 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bdf99f7b-a55a-47f6-959c-256271da1949', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d41ac09b0>]}
+[0m20:51:50.292684 [debug] [MainThread]: On master: ROLLBACK
+[0m20:51:50.293660 [debug] [MainThread]: Using postgres connection "master"
+[0m20:51:50.294482 [debug] [MainThread]: On master: BEGIN
+[0m20:51:50.295596 [debug] [MainThread]: SQL status: BEGIN in 0.000 seconds
+[0m20:51:50.296420 [debug] [MainThread]: On master: COMMIT
+[0m20:51:50.297209 [debug] [MainThread]: Using postgres connection "master"
+[0m20:51:50.298145 [debug] [MainThread]: On master: COMMIT
+[0m20:51:50.299160 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m20:51:50.299951 [debug] [MainThread]: On master: Close
+[0m20:51:50.303911 [debug] [Thread-1 (]: Began running node test.warehouse_project.not_null_stg_products_id.3973b95dd5
+[0m20:51:50.305190 [info ] [Thread-1 (]: 1 of 4 START test not_null_stg_products_id ..................................... [RUN]
+[0m20:51:50.306458 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_warehouse_public, now test.warehouse_project.not_null_stg_products_id.3973b95dd5)
+[0m20:51:50.307521 [debug] [Thread-1 (]: Began compiling node test.warehouse_project.not_null_stg_products_id.3973b95dd5
+[0m20:51:50.324475 [debug] [Thread-1 (]: Writing injected SQL for node "test.warehouse_project.not_null_stg_products_id.3973b95dd5"
+[0m20:51:50.338096 [debug] [Thread-1 (]: Began executing node test.warehouse_project.not_null_stg_products_id.3973b95dd5
+[0m20:51:50.353387 [debug] [Thread-1 (]: Writing runtime sql for node "test.warehouse_project.not_null_stg_products_id.3973b95dd5"
+[0m20:51:50.367150 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.not_null_stg_products_id.3973b95dd5"
+[0m20:51:50.368386 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_products_id.3973b95dd5: BEGIN
+[0m20:51:50.369326 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:51:50.375309 [debug] [Thread-1 (]: SQL status: BEGIN in 0.006 seconds
+[0m20:51:50.376812 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.not_null_stg_products_id.3973b95dd5"
+[0m20:51:50.377772 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_products_id.3973b95dd5: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "warehouse_project", "target_name": "dev", "node_id": "test.warehouse_project.not_null_stg_products_id.3973b95dd5"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id
+from "warehouse"."public"."stg_products"
+where id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:51:50.383928 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.005 seconds
+[0m20:51:50.388592 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_products_id.3973b95dd5: ROLLBACK
+[0m20:51:50.389642 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_products_id.3973b95dd5: Close
+[0m20:51:50.390815 [info ] [Thread-1 (]: 1 of 4 PASS not_null_stg_products_id ........................................... [[32mPASS[0m in 0.08s]
+[0m20:51:50.392421 [debug] [Thread-1 (]: Finished running node test.warehouse_project.not_null_stg_products_id.3973b95dd5
+[0m20:51:50.393550 [debug] [Thread-1 (]: Began running node test.warehouse_project.not_null_stg_users_id.5fe2ab042f
+[0m20:51:50.394629 [info ] [Thread-1 (]: 2 of 4 START test not_null_stg_users_id ........................................ [RUN]
+[0m20:51:50.395989 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.warehouse_project.not_null_stg_products_id.3973b95dd5, now test.warehouse_project.not_null_stg_users_id.5fe2ab042f)
+[0m20:51:50.396945 [debug] [Thread-1 (]: Began compiling node test.warehouse_project.not_null_stg_users_id.5fe2ab042f
+[0m20:51:50.401485 [debug] [Thread-1 (]: Writing injected SQL for node "test.warehouse_project.not_null_stg_users_id.5fe2ab042f"
+[0m20:51:50.412183 [debug] [Thread-1 (]: Began executing node test.warehouse_project.not_null_stg_users_id.5fe2ab042f
+[0m20:51:50.415999 [debug] [Thread-1 (]: Writing runtime sql for node "test.warehouse_project.not_null_stg_users_id.5fe2ab042f"
+[0m20:51:50.426198 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.not_null_stg_users_id.5fe2ab042f"
+[0m20:51:50.427377 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_users_id.5fe2ab042f: BEGIN
+[0m20:51:50.428426 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:51:50.434672 [debug] [Thread-1 (]: SQL status: BEGIN in 0.006 seconds
+[0m20:51:50.436196 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.not_null_stg_users_id.5fe2ab042f"
+[0m20:51:50.437605 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_users_id.5fe2ab042f: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "warehouse_project", "target_name": "dev", "node_id": "test.warehouse_project.not_null_stg_users_id.5fe2ab042f"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select id
+from "warehouse"."public"."stg_users"
+where id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:51:50.440267 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.002 seconds
+[0m20:51:50.442943 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_users_id.5fe2ab042f: ROLLBACK
+[0m20:51:50.444283 [debug] [Thread-1 (]: On test.warehouse_project.not_null_stg_users_id.5fe2ab042f: Close
+[0m20:51:50.445542 [info ] [Thread-1 (]: 2 of 4 PASS not_null_stg_users_id .............................................. [[32mPASS[0m in 0.05s]
+[0m20:51:50.447066 [debug] [Thread-1 (]: Finished running node test.warehouse_project.not_null_stg_users_id.5fe2ab042f
+[0m20:51:50.448068 [debug] [Thread-1 (]: Began running node test.warehouse_project.unique_stg_products_id.83a3cf9914
+[0m20:51:50.449028 [info ] [Thread-1 (]: 3 of 4 START test unique_stg_products_id ....................................... [RUN]
+[0m20:51:50.450156 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.warehouse_project.not_null_stg_users_id.5fe2ab042f, now test.warehouse_project.unique_stg_products_id.83a3cf9914)
+[0m20:51:50.451054 [debug] [Thread-1 (]: Began compiling node test.warehouse_project.unique_stg_products_id.83a3cf9914
+[0m20:51:50.457753 [debug] [Thread-1 (]: Writing injected SQL for node "test.warehouse_project.unique_stg_products_id.83a3cf9914"
+[0m20:51:50.467339 [debug] [Thread-1 (]: Began executing node test.warehouse_project.unique_stg_products_id.83a3cf9914
+[0m20:51:50.470840 [debug] [Thread-1 (]: Writing runtime sql for node "test.warehouse_project.unique_stg_products_id.83a3cf9914"
+[0m20:51:50.480504 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.unique_stg_products_id.83a3cf9914"
+[0m20:51:50.481700 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_products_id.83a3cf9914: BEGIN
+[0m20:51:50.482726 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:51:50.488995 [debug] [Thread-1 (]: SQL status: BEGIN in 0.006 seconds
+[0m20:51:50.490247 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.unique_stg_products_id.83a3cf9914"
+[0m20:51:50.491110 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_products_id.83a3cf9914: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "warehouse_project", "target_name": "dev", "node_id": "test.warehouse_project.unique_stg_products_id.83a3cf9914"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    id as unique_field,
+    count(*) as n_records
+
+from "warehouse"."public"."stg_products"
+where id is not null
+group by id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m20:51:50.493762 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.002 seconds
+[0m20:51:50.495834 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_products_id.83a3cf9914: ROLLBACK
+[0m20:51:50.497074 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_products_id.83a3cf9914: Close
+[0m20:51:50.498263 [info ] [Thread-1 (]: 3 of 4 PASS unique_stg_products_id ............................................. [[32mPASS[0m in 0.05s]
+[0m20:51:50.499840 [debug] [Thread-1 (]: Finished running node test.warehouse_project.unique_stg_products_id.83a3cf9914
+[0m20:51:50.500990 [debug] [Thread-1 (]: Began running node test.warehouse_project.unique_stg_users_id.b3a174283a
+[0m20:51:50.502071 [info ] [Thread-1 (]: 4 of 4 START test unique_stg_users_id .......................................... [RUN]
+[0m20:51:50.503255 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.warehouse_project.unique_stg_products_id.83a3cf9914, now test.warehouse_project.unique_stg_users_id.b3a174283a)
+[0m20:51:50.504369 [debug] [Thread-1 (]: Began compiling node test.warehouse_project.unique_stg_users_id.b3a174283a
+[0m20:51:50.508687 [debug] [Thread-1 (]: Writing injected SQL for node "test.warehouse_project.unique_stg_users_id.b3a174283a"
+[0m20:51:50.517755 [debug] [Thread-1 (]: Began executing node test.warehouse_project.unique_stg_users_id.b3a174283a
+[0m20:51:50.522710 [debug] [Thread-1 (]: Writing runtime sql for node "test.warehouse_project.unique_stg_users_id.b3a174283a"
+[0m20:51:50.532466 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.unique_stg_users_id.b3a174283a"
+[0m20:51:50.533527 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_users_id.b3a174283a: BEGIN
+[0m20:51:50.534614 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:51:50.540581 [debug] [Thread-1 (]: SQL status: BEGIN in 0.006 seconds
+[0m20:51:50.542181 [debug] [Thread-1 (]: Using postgres connection "test.warehouse_project.unique_stg_users_id.b3a174283a"
+[0m20:51:50.543151 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_users_id.b3a174283a: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "warehouse_project", "target_name": "dev", "node_id": "test.warehouse_project.unique_stg_users_id.b3a174283a"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    id as unique_field,
+    count(*) as n_records
+
+from "warehouse"."public"."stg_users"
+where id is not null
+group by id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m20:51:50.545722 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.002 seconds
+[0m20:51:50.548317 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_users_id.b3a174283a: ROLLBACK
+[0m20:51:50.549377 [debug] [Thread-1 (]: On test.warehouse_project.unique_stg_users_id.b3a174283a: Close
+[0m20:51:50.550700 [info ] [Thread-1 (]: 4 of 4 PASS unique_stg_users_id ................................................ [[32mPASS[0m in 0.05s]
+[0m20:51:50.551947 [debug] [Thread-1 (]: Finished running node test.warehouse_project.unique_stg_users_id.b3a174283a
+[0m20:51:50.554280 [debug] [MainThread]: Using postgres connection "master"
+[0m20:51:50.555221 [debug] [MainThread]: On master: BEGIN
+[0m20:51:50.556157 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:51:50.562437 [debug] [MainThread]: SQL status: BEGIN in 0.006 seconds
+[0m20:51:50.563554 [debug] [MainThread]: On master: COMMIT
+[0m20:51:50.564408 [debug] [MainThread]: Using postgres connection "master"
+[0m20:51:50.565289 [debug] [MainThread]: On master: COMMIT
+[0m20:51:50.566505 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m20:51:50.567541 [debug] [MainThread]: On master: Close
+[0m20:51:50.568754 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:51:50.569729 [debug] [MainThread]: Connection 'test.warehouse_project.unique_stg_users_id.b3a174283a' was properly closed.
+[0m20:51:50.570875 [info ] [MainThread]: 
+[0m20:51:50.571966 [info ] [MainThread]: Finished running 4 data tests in 0 hours 0 minutes and 0.37 seconds (0.37s).
+[0m20:51:50.574122 [debug] [MainThread]: Command end result
+[0m20:51:50.608900 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m20:51:50.614804 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m20:51:50.626214 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m20:51:50.627287 [info ] [MainThread]: 
+[0m20:51:50.628566 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:51:50.629663 [info ] [MainThread]: 
+[0m20:51:50.630754 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m20:51:50.632408 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 1.4996802, "process_in_blocks": "1968", "process_kernel_time": 0.256731, "process_mem_max_rss": "114480", "process_out_blocks": "1600", "process_user_time": 2.211841}
+[0m20:51:50.633644 [debug] [MainThread]: Command `dbt test` succeeded at 20:51:50.633536 after 1.50 seconds
+[0m20:51:50.634667 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d4464d250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d438b2f60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0d435b70b0>]}
+[0m20:51:50.635644 [debug] [MainThread]: Flushing usage events
+[0m20:51:51.122199 [debug] [MainThread]: An error was encountered while trying to flush usage events
