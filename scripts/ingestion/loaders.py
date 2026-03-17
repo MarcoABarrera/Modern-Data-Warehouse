@@ -1,25 +1,38 @@
 def create_tables(cur):
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS raw_products (
-        id INT PRIMARY KEY,
-        title TEXT,
-        price FLOAT,
-        category TEXT
-    );
-    """)
+    #cur.execute("""
+    #CREATE TABLE IF NOT EXISTS raw_products (
+    #    id INT PRIMARY KEY,
+    #    title TEXT,
+    #    price FLOAT,
+    #    category TEXT
+    #);
+    #""")
+
+    #cur.execute("""
+    #CREATE TABLE IF NOT EXISTS raw_users (
+    #    id INT PRIMARY KEY,
+    #    email TEXT,
+    #    username TEXT
+    #);
+    #""")
+
+    #cur.execute("""
+    #CREATE TABLE IF NOT EXISTS raw_carts (
+    #id INT,
+    #user_id INT,
+    #product_id INT,
+    #quantity INT,
+    #date DATE
+    #);
+    #""")
+    cur.execute("DROP TABLE IF EXISTS raw_carts CASCADE;")
 
     cur.execute("""
-    CREATE TABLE IF NOT EXISTS raw_users (
-        id INT PRIMARY KEY,
-        email TEXT,
-        username TEXT
-    );
-    """)
-
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS raw_carts (
-        id INT PRIMARY KEY,
+    CREATE TABLE raw_carts (
+        id INT,
         user_id INT,
+        product_id INT,
+        quantity INT,
         date DATE
     );
     """)
@@ -54,12 +67,15 @@ def load_users(cur, data):
 
 def load_carts(cur, data):
     for cart in data:
-        cur.execute("""
-            INSERT INTO raw_carts (id, user_id, date)
-            VALUES (%s, %s, %s)
-            ON CONFLICT (id) DO NOTHING;
-        """, (
-            cart['id'],
-            cart['userId'],
-            cart['date']
-        ))
+        for product in cart["products"]:
+            cur.execute("""
+                INSERT INTO raw_carts (id, user_id, product_id, quantity, date)
+                VALUES (%s, %s, %s, %s, %s)
+                ON CONFLICT DO NOTHING;
+            """, (
+                cart["id"],
+                cart["userId"],
+                product["productId"],
+                product["quantity"],
+                cart["date"]
+            ))
