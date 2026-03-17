@@ -14,6 +14,8 @@ It covers the full data lifecycle:
 
 The goal is to simulate a **real-world production data platform** using industry-standard tools.
 
+![Dashboard](docs/dashboard_1.png)
+
 ---
 
 ## 🧱 Architecture
