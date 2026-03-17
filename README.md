@@ -11,8 +11,9 @@ It covers the full data lifecycle:
 * **Transformation & modeling** using dbt
 * **Data quality testing**
 * **Interactive analytics dashboard**
+* **Workflow orchestration with Airflow**
 
-The goal is to simulate a **real-world production data platform** using industry-standard tools.
+The goal is to simulate a real-world data engineering system, including orchestration, containerization, and debugging of distributed components.
 
 ![Dashboard](docs/dashboard_1.png)
 
@@ -29,7 +30,7 @@ The goal is to simulate a **real-world production data platform** using industry
 | Layer           | Tool                                    |
 | --------------- | --------------------------------------- |
 | Ingestion       | Python (requests, psycopg2)             |
-| Orchestration   | Modular Python pipeline (Airflow-ready) |
+| Orchestration   | Apache Airflow (Dockerized) |
 | Data Warehouse  | PostgreSQL (Dockerized)                 |
 | Transformations | dbt (Dockerized)                        |
 | Data Modeling   | Star Schema (Fact & Dimensions)         |
@@ -118,6 +119,33 @@ Purpose:
 
 ---
 
+### 🔁 Orchestration (Airflow)
+
+The pipeline is orchestrated using **Apache Airflow**, enabling automated and reliable execution.
+
+**DAG**: elt_pipeline
+
+**Workflow:**
+
+1. run_ingestion → Extract & load raw data
+
+2. dbt_run → Transform data into analytics models
+
+3. dbt_test → Validate data quality
+
+**Key Features:**
+
+* Task dependencies
+
+* Retry logic
+
+* Modular pipeline design
+
+* Containerized execution
+
+![Airflow](docs/airflow.png)
+---
+
 ## 📊 Data Quality
 
 Implemented using **dbt tests**:
@@ -175,23 +203,18 @@ cd Modern-Data-Warehouse
 ### 2. Start services
 
 ```bash
-docker compose up -d
+docker compose up -d --build
 ```
 
-### 3. Run ingestion pipeline
+### 3. Trigger pipeline (Airflow)
 
-```bash
-python scripts/ingestion/main.py
-```
+Open: http://localhost:8080
 
-### 4. Run dbt models
+Login: admin / admin
 
-```bash
-docker compose run dbt run
-docker compose run dbt test
-```
+Trigger DAG: elt_pipeline
 
-### 5. Launch dashboard
+### 4. Launch dashboard
 
 ```bash
 streamlit run dashboard/app.py
@@ -203,6 +226,7 @@ streamlit run dashboard/app.py
 
 * Fully **containerized data platform**
 * Clean **modular architecture**
+* Integrated **Airflow + dbt workflow**
 * Realistic **business use-case (e-commerce)**
 * End-to-end **data → insights pipeline**
 * Production-inspired design
