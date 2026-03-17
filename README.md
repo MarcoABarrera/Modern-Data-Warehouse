@@ -1,5 +1,3 @@
-# Modern-Data-Warehouse
-
 # 🚀 Modern Data Warehouse Project (End-to-End ELT Pipeline)
 
 ## 📌 Overview
@@ -20,20 +18,7 @@ The goal is to simulate a **real-world production data platform** using industry
 
 ## 🧱 Architecture
 
-```
-FakeStore API
-      ↓
-Python Ingestion Pipeline
-      ↓
-PostgreSQL (Docker)
-      ↓
-dbt (Docker)
-  ├── Staging Layer
-  ├── Mart Layer (Star Schema)
-  └── Data Quality Tests
-      ↓
-Streamlit Dashboard
-```
+![Architecture](docs/architecture.png)
 
 ---
 
@@ -149,24 +134,11 @@ Ensures:
 
 Interactive dashboard with:
 
-### 🔑 KPIs
+### Overview
+![Dashboard](docs/dashboard_1.png)
 
-* Total Revenue 💰
-* Number of Orders 🛒
-* Average Order Value 📊
-
-### 📊 Visualizations
-
-* Revenue over time
-* Top products
-* Top customers
-
-### 🎛️ Features
-
-* Date filtering
-* Product filtering
-* Cached queries for performance
-
+### Filters in Action
+![Dashboard Filters](docs/dashboard_2.png)
 ---
 
 ## 🧠 Key Concepts Demonstrated
