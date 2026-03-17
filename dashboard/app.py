@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import psycopg2
 
+st.set_page_config(page_title="E-Commerce Dashboard", layout="wide")
+
 # ------------------------
 # DB CONNECTION
 # ------------------------
@@ -13,91 +15,115 @@ def get_connection():
         password="password"
     )
 
-
 # ------------------------
-# LOAD DATA
+# LOAD DATA (CACHED)
 # ------------------------
+@st.cache_data
 def load_data(query):
     conn = get_connection()
     df = pd.read_sql(query, conn)
     conn.close()
     return df
 
+# ------------------------
+# TITLE
+# ------------------------
+st.title("📊 E-Commerce Analytics Dashboard")
 
 # ------------------------
-# STREAMLIT UI
+# LOAD BASE DATA
 # ------------------------
-st.title("📊 E-Commerce Data Dashboard")
+base_query = "SELECT * FROM fact_cart_items;"
+df = load_data(base_query)
+
+# ------------------------
+# SIDEBAR FILTERS
+# ------------------------
+st.sidebar.header("Filters")
+
+# Date filter
+df["date"] = pd.to_datetime(df["date"])
+min_date = df["date"].min()
+max_date = df["date"].max()
+
+date_range = st.sidebar.date_input(
+    "Select date range",
+    [min_date, max_date]
+)
+
+# Product filter
+products = df["product_id"].unique()
+selected_products = st.sidebar.multiselect(
+    "Select products",
+    products,
+    default=products
+)
+
+# Apply filters
+filtered_df = df[
+    (df["date"] >= pd.to_datetime(date_range[0])) &
+    (df["date"] <= pd.to_datetime(date_range[1])) &
+    (df["product_id"].isin(selected_products))
+]
 
 # ------------------------
 # KPIs
 # ------------------------
-kpi_query = """
-SELECT
-    SUM(total_value) AS revenue,
-    COUNT(DISTINCT cart_id) AS orders,
-    AVG(total_value) AS avg_order_value
-FROM fact_cart_items;
-"""
+st.subheader("📊 Key Metrics")
 
-kpis = load_data(kpi_query)
+total_revenue = filtered_df["total_value"].sum()
+total_orders = filtered_df["cart_id"].nunique()
+avg_order_value = filtered_df["total_value"].mean()
 
 col1, col2, col3 = st.columns(3)
 
-col1.metric("💰 Total Revenue", f"${kpis['revenue'][0]:,.2f}")
-col2.metric("🛒 Orders", int(kpis['orders'][0]))
-col3.metric("📊 Avg Order Value", f"${kpis['avg_order_value'][0]:,.2f}")
-
-
-# ------------------------
-# Revenue per product
-# ------------------------
-st.subheader("Revenue per Product")
-
-query1 = """
-SELECT
-    product_id,
-    SUM(total_value) AS revenue
-FROM fact_cart_items
-GROUP BY product_id
-ORDER BY revenue DESC;
-"""
-
-df1 = load_data(query1)
-st.bar_chart(df1.set_index("product_id"))
-
+col1.metric("💰 Revenue", f"${total_revenue:,.2f}")
+col2.metric("🛒 Orders", total_orders)
+col3.metric("📊 Avg Order Value", f"${avg_order_value:,.2f}")
 
 # ------------------------
-# Revenue over time
+# REVENUE OVER TIME
 # ------------------------
-st.subheader("Revenue Over Time")
+st.subheader("📈 Revenue Over Time")
 
-query2 = """
-SELECT
-    date,
-    SUM(total_value) AS revenue
-FROM fact_cart_items
-GROUP BY date
-ORDER BY date;
-"""
+rev_time = (
+    filtered_df.groupby("date")["total_value"]
+    .sum()
+    .reset_index()
+)
 
-df2 = load_data(query2)
-st.line_chart(df2.set_index("date"))
-
+st.line_chart(rev_time.set_index("date"))
 
 # ------------------------
-# Top users
+# TOP PRODUCTS
 # ------------------------
-st.subheader("Top Users")
+st.subheader("🏆 Top Products")
 
-query3 = """
-SELECT
-    user_id,
-    SUM(total_value) AS total_spent
-FROM fact_cart_items
-GROUP BY user_id
-ORDER BY total_spent DESC;
-"""
+top_products = (
+    filtered_df.groupby("product_id")["total_value"]
+    .sum()
+    .sort_values(ascending=False)
+    .head(10)
+)
 
-df3 = load_data(query3)
-st.bar_chart(df3.set_index("user_id"))
+st.bar_chart(top_products)
+
+# ------------------------
+# TOP USERS
+# ------------------------
+st.subheader("👤 Top Users")
+
+top_users = (
+    filtered_df.groupby("user_id")["total_value"]
+    .sum()
+    .sort_values(ascending=False)
+    .head(10)
+)
+
+st.bar_chart(top_users)
+
+# ------------------------
+# RAW DATA VIEW
+# ------------------------
+with st.expander("🔍 Show Raw Data"):
+    st.dataframe(filtered_df)
