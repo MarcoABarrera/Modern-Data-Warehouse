@@ -25,6 +25,15 @@ def main():
     carts = fetch_data(API_ENDPOINTS["carts"])
     load_carts(cur, carts)
 
+    cur.execute("SELECT COUNT(*) FROM raw_products;")
+    print("products:", cur.fetchone()[0])
+
+    cur.execute("SELECT COUNT(*) FROM raw_users;")
+    print("users:", cur.fetchone()[0])
+
+    cur.execute("SELECT COUNT(*) FROM raw_carts;")
+    print("carts:", cur.fetchone()[0])
+
     conn.commit()
     cur.close()
     conn.close()
