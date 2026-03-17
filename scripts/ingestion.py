@@ -79,6 +79,9 @@ def main():
     print("Inserting data...")
     insert_products(cur, data)
 
+    cur.execute("SELECT COUNT(*) FROM raw_products;")
+    print("Rows in table:", cur.fetchone()[0])
+
     conn.commit()
     cur.close()
     conn.close()
