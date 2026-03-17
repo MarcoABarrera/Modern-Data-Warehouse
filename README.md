@@ -135,8 +135,16 @@ Ensures:
 ## 📈 Dashboard (Streamlit)
 
 
-### Overview
-![Dashboard](docs/dashboard_1.png)
+The dashboard has the intention to answer the following points:
+* What is the total revenue over time?
+* Which products generate the most revenue?
+* Who are the top customers?
+* How does sales evolver over time?
+
+It also contains features such as:
+* Dynamic filtering
+* Real-time KPI Updates
+* Interactive charts
 
 ### Filters in Action
 ![Dashboard Filters](docs/dashboard_2.png)

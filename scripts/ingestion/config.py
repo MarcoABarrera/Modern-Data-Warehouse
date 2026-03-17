@@ -1,5 +1,5 @@
 DB_CONFIG = {
-    "host": "localhost",
+    "host": "postgres",
     "database": "warehouse",
     "user": "user",
     "password": "password"

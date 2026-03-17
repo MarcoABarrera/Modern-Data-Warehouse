@@ -1,34 +1,23 @@
 def create_tables(cur):
-    #cur.execute("""
-    #CREATE TABLE IF NOT EXISTS raw_products (
-    #    id INT PRIMARY KEY,
-    #    title TEXT,
-    #    price FLOAT,
-    #    category TEXT
-    #);
-    #""")
-
-    #cur.execute("""
-    #CREATE TABLE IF NOT EXISTS raw_users (
-    #    id INT PRIMARY KEY,
-    #    email TEXT,
-    #    username TEXT
-    #);
-    #""")
-
-    #cur.execute("""
-    #CREATE TABLE IF NOT EXISTS raw_carts (
-    #id INT,
-    #user_id INT,
-    #product_id INT,
-    #quantity INT,
-    #date DATE
-    #);
-    #""")
-    cur.execute("DROP TABLE IF EXISTS raw_carts CASCADE;")
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS raw_products (
+        id INT PRIMARY KEY,
+        title TEXT,
+        price FLOAT,
+        category TEXT
+    );
+    """)
 
     cur.execute("""
-    CREATE TABLE raw_carts (
+    CREATE TABLE IF NOT EXISTS raw_users (
+        id INT PRIMARY KEY,
+        email TEXT,
+        username TEXT
+    );
+    """)
+
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS raw_carts (
         id INT,
         user_id INT,
         product_id INT,
