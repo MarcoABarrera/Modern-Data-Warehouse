@@ -132,7 +132,6 @@ Ensures:
 
 ## 📈 Dashboard (Streamlit)
 
-Interactive dashboard with:
 
 ### Overview
 ![Dashboard](docs/dashboard_1.png)
