@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_users
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_products
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
